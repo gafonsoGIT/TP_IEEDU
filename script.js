@@ -22,7 +22,7 @@ const loadPlaces = function() {
   
                       // add place icon
                       const icon = document.createElement('a-image');
-                      icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+                      icon.setAttribute('gps-new-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
                       icon.setAttribute('name', place.name);
                       icon.setAttribute('src', '../assets/map-marker.png');
   

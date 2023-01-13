@@ -1,43 +1,15 @@
-<!-- import aframe and then ar.js with image tracking / location based features -->
-<script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
-<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-
-<!-- style for the loader -->
-<style>
-  .arjs-loader {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .arjs-loader div {
-    text-align: center;
-    font-size: 1.25em;
-    color: white;
-  }
-</style>
-
-<body style="margin : 0px; overflow: hidden;">
-  <!-- a-frame scene -->
-  <a-scene
-    vr-mode-ui="enabled: false;"
-    renderer="logarithmicDepthBuffer: true;"
-    embedded
-    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
-  >
-    <a-assets>
-      <a-asset-item id="cardipvc" src="https://dl.dropboxusercontent.com/s/hceiueyjti3z8v2/CardIPVC.gltf"></a-asset-item>
-    </a-assets>
-    <a-entity gltf-model="#cardipvc" scale="1 1 1"></a-entity>
-    <a-entity geometry="primitive: box" material="color: red"
-          light="type: point; intensity: 2.0">
-    <a-entity camera></a-entity>
-  </a-scene>
-</body>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-asset-item id="cardipvc" src="https://dl.dropboxusercontent.com/s/hceiueyjti3z8v2/CardIPVC.gltf"></a-asset-item>
+      </a-assets>
+      <a-entity gltf-model="#cardipvc" scale="1 1 1"></a-entity>
+      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+    </a-scene>
+  </body>
+</html>

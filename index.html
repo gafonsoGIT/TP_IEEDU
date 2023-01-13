@@ -12,12 +12,33 @@
         <a-asset-item id="pedrabiblioteca" src="https://dl.dropboxusercontent.com/s/maxzmbah7wu097o/pedraBiblioteca.gltf"></a-asset-item>
         <a-asset-item id="bibliotecaentrada" src="https://dl.dropboxusercontent.com/s/8ibv2eebxl5bu95/bibliotecaEntrada.gltf"></a-asset-item>
       </a-assets>
-      <a-entity position="0 1.5 -8" rotation="0 90 90" gltf-model="#cardipvc" scale="0.3 0.2 0.1"></a-entity>
+      <a-entity id="cardipvcentity" position="0 1.5 -8" rotation="0 90 90" gltf-model="#cardipvc" scale="0.3 0.2 0.1"></a-entity>
       <a-entity position="-7 1.5 -7" rotation="0 120 90" gltf-model="#maquinarefil" scale="0.3 0.2 0.05"></a-entity>
       <a-entity position="7 1.5 -7" rotation="0 60 90" gltf-model="#estacaocarregamento" scale="0.3 0.2 0.025"></a-entity>
       <a-entity position="0 1.5 8" rotation="0 270 90" gltf-model="#maquinavendaautomatica" scale="0.3 0.2 0.12"></a-entity>
       <a-entity position="-7 1.5 7" rotation="0 225 90" gltf-model="#pedrabiblioteca" scale="0.3 0.2 0.12"></a-entity>
       <a-entity position="7 1.5 7" rotation="0 315 90" gltf-model="#bibliotecaentrada" scale="0.3 0.2 0.2"></a-entity>
+      <a-entity camera look-controls>
+        <a-entity cursor="fuse: true; fuseTimeout: 500"
+                  position="0 0 -1"
+                  geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                  material="color: black; shader: flat">
+        </a-entity>
+      </a-entity>
+      <a-entity id="box" cursor-listener geometry="primitive: box" material="color: blue"></a-entity>
     </a-scene>
   </body>
+  <script>
+    AFRAME.registerComponent('cursor-listener', {
+  init: function () {
+    var lastIndex = -1;
+    var COLORS = ['red', 'green', 'blue'];
+    this.el.addEventListener('click', function (evt) {
+      lastIndex = (lastIndex + 1) % COLORS.length;
+      this.setAttribute('material', 'color', COLORS[lastIndex]);
+      console.log('I was clicked at: ', evt.detail.intersection.point);
+    });
+  }
+});
+  </script>
 </html>
